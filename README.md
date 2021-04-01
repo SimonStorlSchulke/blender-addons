@@ -4,3 +4,6 @@ Here I will upload small Blender Addons that are not worthy if their own reposit
 ## Add Lightblocker [(Download)](https://raw.githubusercontent.com/SimonStorlSchulke/blender-addons/master/add_lightblocker.py)
 Creates a Lightblocker Object with an material preset from the Light Context Menu.
 ![lightblocker](./doc/add_lightblocker.gif)
+
+## Hardify [(Download)](https://raw.githubusercontent.com/SimonStorlSchulke/blender-addons/master/hardify.py)
+Quickly Shades an Object Smooth and turns on Autosmooth + Optional Weighted Normals Modifier. Located in Object Mode → Select Mesh Object → Object Context Menu (Rightclick or W)
