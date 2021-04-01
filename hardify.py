@@ -1,7 +1,7 @@
 bl_info = {
     "name" : "Hardify",
     "author" : "Simon Storl-Schulke",
-    "description" : "",
+    "description" : "Shade Object smooth and turn on Autosmooth + Optional Weighted Normals Modifier",
     "blender" : (2, 92, 0),
     "version" : (0, 0, 1),
     "location" : "Object Mode -> Select Mesh Object -> Object Context menu (Rightclick or W)",
