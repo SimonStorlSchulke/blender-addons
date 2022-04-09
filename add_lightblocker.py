@@ -1,12 +1,13 @@
 bl_info = {
     "name": "Add Lightblocker",
     "author": "Simon Storl-Schulke",
-    "version": (1, 0),
-    "blender": (2, 82, 0),
-    "location": "View3D > Light Context Menu > Add Lightblocker",
     "description": "Adds a simple Light Blocker with material setup for the selected Light.",
+    "version": (1, 0),
+    "blender": (3, 10, 0),
+    "location": "View3D > Light Context Menu > Add Lightblocker",
     "warning": "",
-    "wiki_url": "",
+    "doc_url": "https://github.com/SimonStorlSchulke/blender-addons",
+    "tracker_url": "https://github.com/SimonStorlSchulke/blender-addons/issues",
     "category": "Lighting",
 }
 
