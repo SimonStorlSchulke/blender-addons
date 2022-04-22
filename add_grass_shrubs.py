@@ -51,11 +51,11 @@ class GRASSSHRUBGENERATOR_OT_add_grass_shrubs(bpy.types.Operator):
     WIDTH_TIP: bpy.props.FloatProperty(name="Tip Width", default=0, min=0)
 
     HEIGHT_MIN: bpy.props.FloatProperty(name="Meight Min", default=0.05, min=0)
-    HEIGHT_MAX: bpy.props.FloatProperty(name="Height Max", default=0.15, min=0)
+    HEIGHT_MAX: bpy.props.FloatProperty(name="Height Max", default=0.15, min=0.01)
     RESOLUTION: bpy.props.IntProperty(name="resolution", default = 10)
 
-    ROT_BASE_MIN: bpy.props.FloatProperty(name="Rotation Base Min", default=3, min=0)
-    ROT_BASE_MAX: bpy.props.FloatProperty(name="Rotation Base Max", default=25, min=0)
+    ROT_BASE_MIN: bpy.props.FloatProperty(name="Rotation Base Min", default=3)
+    ROT_BASE_MAX: bpy.props.FloatProperty(name="Rotation Base Max", default=25)
     ROT_TIP_MIN: bpy.props.FloatProperty(name="Rotation Tip Min", default=30, min=0)
     ROT_TIP_MAX: bpy.props.FloatProperty(name="Rotation Tip Max", default=90, min=0)
     ROT_FALLOFF: bpy.props.FloatProperty(name="Rotation Falloff", default=5, min=0.01)
@@ -87,7 +87,7 @@ class GRASSSHRUBGENERATOR_OT_add_grass_shrubs(bpy.types.Operator):
                 gradient = math.pow(progress, self.WIDTH_EXPONENT)
 
                 pos_x = map_range(gradient, 0, 1, self.WIDTH_BASE, self.WIDTH_TIP)
-                pos_y = progress * blade_height
+                pos_y = progress * blade_height - self.HEIGHT_MAX * 0.15
                 
                 vert_1: bmesh.types.BMVert = bm.verts.new((-pos_x, 0, pos_y))
                 vert_2: bmesh.types.BMVert = bm.verts.new((pos_x, 0, pos_y))
