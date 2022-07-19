@@ -12,6 +12,6 @@ Creates a collection of customizable grass shrubs for use in particle systems.
 ## Hardify [(Download)](https://raw.githubusercontent.com/SimonStorlSchulke/blender-addons/master/hardify.py)
 Quickly Shades an Object Smooth and turns on Autosmooth + Optional Weighted Normals Modifier. Located in Object Mode → Select Mesh Object → Object Context Menu (Rightclick or W)
 
-## Cycles - Eevee-Previewsettings [(Download)](https://raw.githubusercontent.com/SimonStorlSchulke/cycles_eevee-previewsettings.py)
+## Cycles - Eevee-Previewsettings [(Download)](https://raw.githubusercontent.com/SimonStorlSchulke/blender-addons/master/cycles_eevee-previewsettings.py)
 When using Cycles, displays the most relevant Eevee settings for the Material Preview in the Viewport Shading Menu  
 ![previewsettings](./doc/previewsettings.jpg)
