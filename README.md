@@ -15,5 +15,6 @@ Quickly Shades an Object Smooth and turns on Autosmooth + Optional Weighted Norm
 
 
 ## Cycles - Eevee-Previewsettings [(Download)](https://raw.githubusercontent.com/SimonStorlSchulke/blender-addons/master/cycles_eevee-previewsettings.py)
-When using Cycles, displays the most relevant Eevee settings for the Material Preview in the Viewport Shading Menu  
+When using Cycles, displays the most relevant Eevee settings for the Material Preview in the Viewport Shading Menu, as well as Material preview Settings in the Materials-/ and Node Editor Area.
 ![previewsettings](./doc/previewsettings.jpg)
+![2022-07-23 23_08_33-Blender](https://user-images.githubusercontent.com/25198913/180622942-ab74d718-242a-428a-b669-e56374fd2410.png)
