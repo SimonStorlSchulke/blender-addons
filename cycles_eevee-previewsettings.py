@@ -18,7 +18,7 @@ bl_info = {
     "name": "Previewsettings",
     "description": "When using Cycles, displays the most relevant Eevee settings for the Material Preview in the Viewport Shading Menu",
     "author": "Simon Storl-Schulke",
-    "version": (1, 0, 0),
+    "version": (1, 1, 0),
     "blender": (3, 2, 2),
     "location": "View3D → Header → Material Preview Shading Foldout-Menu",
     "category": "Interface" }
@@ -61,8 +61,70 @@ class PREVIEWSETTINGS_PT_panel(bpy.types.Panel):
         layout.prop(props, "use_volumetric_lights")
         layout.prop(props, "use_volumetric_shadows")
 
+
+
+def draw_material_settings(self, context):
+    layout = self.layout
+    layout.use_property_split = True
+    layout.use_property_decorate = False
+
+    mat = context.material
+
+    layout.prop(mat, "use_backface_culling")
+    layout.prop(mat, "blend_method")
+    layout.prop(mat, "shadow_method")
+
+    row = layout.row()
+    row.active = ((mat.blend_method == 'CLIP') or (mat.shadow_method == 'CLIP'))
+    row.prop(mat, "alpha_threshold")
+
+    if mat.blend_method not in {'OPAQUE', 'CLIP', 'HASHED'}:
+        layout.prop(mat, "show_transparent_back")
+
+    layout.prop(mat, "use_screen_refraction")
+    layout.prop(mat, "refraction_depth")
+    layout.prop(mat, "use_sss_translucency")
+    layout.prop(mat, "pass_index")
+
+
+class materialSettingsPanel(bpy.types.Panel):
+
+    bl_label = "Material Preview Settings"
+    bl_context = "material"
+
+    @classmethod
+    def poll(cls, context):
+        mat = context.material
+        return mat and context.engine == "CYCLES"
+
+class EEVEE_MATERIAL_PT_viewport_settings(materialSettingsPanel):
+    bl_region_type = 'WINDOW'
+    bl_space_type = 'PROPERTIES'
+    bl_parent_id = "MATERIAL_PT_viewport"
+
+    def draw(self, context):
+        draw_material_settings(self, context)
+
+class EEVEE_MATERIAL_PT_viewport_settings_Node_Editor(materialSettingsPanel):
+    bl_space_type = "NODE_EDITOR"
+    bl_region_type = "UI"
+    bl_category = "Options"
+    #bl_parent_id = "MATERIAL_PT_viewport" - throws an Error (parent not found) because somehow the Viewport Display Panel is only defined for the Properties space type(?)
+
+    def draw(self, context):
+        draw_material_settings(self, context)
+
+
 def register():
     bpy.utils.register_class(PREVIEWSETTINGS_PT_panel)
+    bpy.utils.register_class(EEVEE_MATERIAL_PT_viewport_settings)
+    bpy.utils.register_class(EEVEE_MATERIAL_PT_viewport_settings_Node_Editor)
+
     
 def unregister():
     bpy.utils.unregister_class(PREVIEWSETTINGS_PT_panel)
+    bpy.utils.unregister_class(EEVEE_MATERIAL_PT_viewport_settings)
+    bpy.utils.unregister_class(EEVEE_MATERIAL_PT_viewport_settings_Node_Editor)
+
+if __name__ == "__main__":
+    register()
